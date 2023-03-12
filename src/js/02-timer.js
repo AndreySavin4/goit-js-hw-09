@@ -24,7 +24,7 @@ const options = {
       Notify.failure('Please choose a date in the future');
       // alert('Please choose a date in the future');
     }
-    selectedDay = selectedDates[0];
+    const selectedDay = selectedDates[0];
   }, // Функция для запуска при каждом закрытии календаря//
 };
 
