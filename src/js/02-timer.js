@@ -15,18 +15,20 @@ const options = {
   time_24hr: true, //Отображает время в 24 часовом режиме//
   defaultDate: new Date(), //Устанавливает начальную выбранную дату //
   minuteIncrement: 1, // Шаг ввода минут //
+
   onClose(selectedDates) {
-    const newDate = new Date();
-    if (selectedDates[0] > newDate) {
-      refs.start.removeAttribute('disabled', false);
+    const currentDate = new Date();
+    if (selectedDates[0] < currentDate) {
+      // Notify.failure("Please choose a date in the future")
+      Notiflix.Notify.failure('Please choose a date in the future');
+      refs.start.disabled = true;
     } else {
-      refs.start.setAttribute('disabled', true);
-      Notify.failure('Please choose a date in the future');
-      // alert('Please choose a date in the future');
+      refs.start.disabled = false;
+      console.log(selectedDates[0]);
     }
     selectedDay = selectedDates[0];
-  }, // Функция для запуска при каждом закрытии календаря//
-};
+  },
+}; // Функция для запуска при каждом закрытии календаря//
 
 refs.start.setAttribute('disabled', true);
 
