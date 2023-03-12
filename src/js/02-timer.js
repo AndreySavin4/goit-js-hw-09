@@ -1,4 +1,5 @@
 import flatpickr from 'flatpickr';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import 'flatpickr/dist/flatpickr.min.css';
 
 const refs = {
@@ -20,7 +21,8 @@ const options = {
       refs.start.removeAttribute('disabled', false);
     } else {
       refs.start.setAttribute('disabled', true);
-      alert('Please choose a date in the future');
+      Notify.failure('Please choose a date in the future');
+      // alert('Please choose a date in the future');
     }
     selectedDay = selectedDates[0];
   }, // Функция для запуска при каждом закрытии календаря//
